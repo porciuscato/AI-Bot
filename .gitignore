@@ -54,3 +54,4 @@ fabric.properties
 .idea/codestream.xml
 
 /venv/
+/__pycache__/
