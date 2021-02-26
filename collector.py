@@ -5,6 +5,7 @@ print("collector 프로그램이 시작 되었습니다!")
 
 from sqlalchemy import create_engine
 import pymysql
+from decouple import config
 
 pymysql.install_as_MySQLdb()
 
@@ -30,15 +31,15 @@ if __name__ == "__main__":
     # 아래 클래스를 호출하자마다 __init__ 함수가 실행이 된다.
     c = Collector()
     # db_name 이라는 변수에 우리가 조회 하고자 하는 데이터베이스의 이름을 넣는다.
-    db_name = 'bot_test1'
+    db_name = config('DB_NAME')
     # mysql db 계정
-    db_id = 'bot'
+    db_id = config("DB_ID")
     # mysql db ip (자신의 PC에 DB를 구축 했을 경우 별도 수정 필요 없음)
-    db_ip = 'localhost'  # localhost : 자신의 컴퓨터를 의미
+    db_ip = config('DB_IP')  # localhost : 자신의 컴퓨터를 의미
     # mysql db 패스워드
-    db_passwd = '1234!@#$'
+    db_passwd = config('DB_PASSWD')
     # db port가 3306이 아닌 다른 port를 사용 하시는 분은 아래 변수에 포트에 맞게 수정하셔야 합니다.
-    db_port = '3306'
+    db_port = config('DB_PORT')
 
     c.db_setting(db_name, db_id, db_passwd, db_ip, db_port)
 

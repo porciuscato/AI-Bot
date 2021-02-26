@@ -57,3 +57,4 @@ fabric.properties
 /__pycache__/
 /grammer
 /info
+settings.ini
