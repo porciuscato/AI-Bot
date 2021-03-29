@@ -240,3 +240,4 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/vscode,django,react
 
 .env
+.vscode/
