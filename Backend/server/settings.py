@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'snippets.apps.SnippetsConfig',
     'rest_framework',
     'restAPI',
 ]
