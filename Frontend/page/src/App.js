@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './App.css'
 
 function App() {
+  const name = "React";
+  const style = {
+    backgroundColor: 'black',
+    color: "aqua",
+    fontSzie: "48px",
+    fontWeight: "bold",
+    padding: 16
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          <br/> This is a New Start!!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={style}>
+      <p>{name} is nothing.</p>
+      <p>It didn't work because of errors. </p>
     </div>
   );
 }
