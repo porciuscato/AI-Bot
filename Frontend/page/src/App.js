@@ -1,20 +1,21 @@
 import React from 'react';
-import './App.css'
+import './App.css';
 
 function App() {
-  const name = "React";
+  const name = 'React';
   const style = {
     backgroundColor: 'black',
-    color: "aqua",
-    fontSzie: "48px",
-    fontWeight: "bold",
-    padding: 16
+    color: 'aqua',
+    fontSzie: '48px',
+    fontWeight: 'bold',
+    padding: 16,
   };
   return (
-    <div style={style}>
-      <p>{name} is nothing.</p>
-      <p>It didn't work because of errors. </p>
-    </div>
+    <>
+      <div className="react">{name}</div>
+      <div style={style}>{name} is amazing!!</div>
+      <input />
+    </>
   );
 }
 
