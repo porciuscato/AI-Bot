@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import MyComponent from './MyComponent';
+import MyComponentClass from './MyComponentClass';
 
 function App() {
   const name = 'React';
@@ -14,7 +16,12 @@ function App() {
     <>
       <div className="react">{name}</div>
       <div style={style}>{name} is amazing!!</div>
-      <input />
+      {/* <input /> */}
+      <MyComponent name="react" favoriteNumber={3}>
+        애기들
+      </MyComponent>{' '}
+      {/* name="React" */}
+      <MyComponentClass favoriteNumber={5}>이것도 애기들</MyComponentClass>
     </>
   );
 }
