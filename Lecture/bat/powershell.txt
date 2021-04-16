@@ -1,0 +1,17 @@
+자동 데이터 수집 중 mysql이 간혹 꺼지는 경우가 발생한다.
+그래서 데이터 수집이 중단되는 경우가 발생하는데 이를 막기 위한 방법이 필요하다.
+
+이건 powershell script file 작성법이다.
+https://www.windowscentral.com/how-create-and-run-your-first-powershell-script-file-windows-10
+
+command prompt 배치 파일 작성법
+https://www.windowscentral.com/how-create-and-run-batch-file-windows-10
+
+powershell에서 service를 확인하고 실행 혹은 중지 시키는 방법이다.
+https://www.windowscentral.com/how-start-and-stop-services-windows-10
+
+
+powershell과 command prompt 차이점
+https://www.howtogeek.com/163127/how-powershell-differs-from-the-windows-command-prompt/#:~:text=PowerShell%20is%20actually%20very%20different,accessible%20from%20the%20Command%20Prompt.
+
+
