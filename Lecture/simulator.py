@@ -2,6 +2,7 @@
 
 from library.simulator_func_mysql import *
 
+
 class simulator():
     def __init__(self):
         self.print_info()
@@ -19,20 +20,18 @@ class simulator():
         option = str(input("시뮬레이팅 데이터베이스 초기화 여부 : (y or n) "))
 
         if option == 'y':
-            self.simul_reset='reset'
-        elif option =='n':
-            self.simul_reset='continue'
+            self.simul_reset = 'reset'
+        elif option == 'n':
+            self.simul_reset = 'continue'
         else:
             print("y or n (소문자) 만 입력 가능 합니다.")
             exit(1)
 
-
     def input_value(self):
         # simulator_func_mysql 라이브러리 클래스 호출
-        simulator_func_mysql(self.simul_num, self.simul_reset,0)
+        simulator_func_mysql(self.simul_num, self.simul_reset, 0)
 
 
 if __name__ == "__main__":
     # simulator 클래스 호출
     simulator()
-
