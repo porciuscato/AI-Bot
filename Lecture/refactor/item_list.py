@@ -12,11 +12,29 @@ if __name__ == "__main__":
     konex = krx_url + '&marketType=konexMkt'
     kospi = krx_url + '&marketType=stockMkt'
     kosdaq = krx_url + '&marketType=kosdaqMkt'
-    tot = 0
+    item_data = []
     for title in [konex, kosdaq, kospi]:
-        html = urlopen(title)
-        item_list = bs(html, 'html.parser').find_all('tr')
-        tot += len(item_list)
-        print(len(item_list))
-    print(tot)
+        print(title)
+        item_list = bs(urlopen(title), 'html.parser').find_all('tr')
+        headers = [name.get_text() for name in item_list[0].findChildren()]
+        for i in range(1, len(item_list)):
+            item_data.append([ele for ele in zip(headers, [name.get_text() for name in item_list[i].findChildren()])])
+    print(len(item_data))
+
     # print(item_list[0])
+
+    # item_list = bs(urlopen(kospi), 'html.parser').find_all('tr')
+    # header = item_list[0]
+    # headers = []
+    # for ele in header.findChildren():
+    #     headers.append(ele.get_text())
+    # print(headers)
+    # item_data = []
+    # pk = 0
+    # for i in range(1, len(item_list)):
+    #     idx = 0
+    #     data = {}
+    #     for ele in item_list[i].findChildren():
+    #         data[headers[idx]] = ele.get_text()
+    #         idx += 1
+    #     item_data.append(data)
