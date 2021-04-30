@@ -1,7 +1,9 @@
 # version 1.3.2
+from library.collector_api import *
+
+
 print("collector 프로그램이 시작 되었습니다!")
 
-from library.collector_api import *
 
 # 매일 장마감 후에 자동으로 데이터를 수집
 class Collector:
@@ -13,6 +15,7 @@ class Collector:
 
     def collecting(self):
         self.collector_api.code_update_check()
+
 
 if __name__ == "__main__":
     print("__main__에 들어왔습니다.")
