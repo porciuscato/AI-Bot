@@ -1,2 +1,7 @@
+PyJWT
+python-decouple
+selenium
+numpy
+sqlalchemy
 lxml
 PyQt5
