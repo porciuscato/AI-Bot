@@ -3,8 +3,10 @@
 from library.simulator_func_mysql import *
 
 
-class simulator():
+class Simulator:
     def __init__(self):
+        self.simul_reset = ...
+        self.simul_num = ...
         self.print_info()
         self.input_value()
 
@@ -34,4 +36,4 @@ class simulator():
 
 if __name__ == "__main__":
     # simulator 클래스 호출
-    simulator()
+    Simulator()
