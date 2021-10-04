@@ -4,6 +4,7 @@ anaconda-navigator==2.1.0
 anaconda-project @ file:///tmp/build/80754af9/anaconda-project_1626085644852/work
 anyio @ file:///C:/ci/anyio_1620153418380/work/dist
 appdirs==1.4.4
+arelle==2.2
 argh==0.26.2
 argon2-cffi @ file:///C:/ci/argon2-cffi_1613037959010/work
 asn1crypto @ file:///tmp/build/80754af9/asn1crypto_1596577642040/work
@@ -52,6 +53,7 @@ cryptography @ file:///C:/ci/cryptography_1616769344312/work
 cycler==0.10.0
 Cython @ file:///C:/ci/cython_1626257071357/work
 cytoolz==0.11.0
+dart-fss==0.3.14
 dask @ file:///tmp/build/80754af9/dask-core_1630523592567/work
 debugpy @ file:///C:/ci/debugpy_1629222854708/work
 decorator @ file:///tmp/build/80754af9/decorator_1621259047763/work
@@ -61,6 +63,7 @@ distributed @ file:///C:/ci/distributed_1630629392970/work
 docutils @ file:///C:/ci/docutils_1620828260973/work
 entrypoints==0.3
 et-xmlfile==1.1.0
+fake-useragent==0.1.11
 fastcache==1.1.0
 filelock @ file:///home/linux1/recipes/ci/filelock_1610993975404/work
 flake8 @ file:///tmp/build/80754af9/flake8_1615834841867/work
@@ -74,6 +77,7 @@ gmpy2==2.0.8
 greenlet @ file:///C:/ci/greenlet_1628888262822/work
 h11==0.12.0
 h5py==2.10.0
+halo==0.0.31
 HeapDict @ file:///Users/ktietz/demo/mc3/conda-bld/heapdict_1630598515714/work
 html5lib @ file:///Users/ktietz/demo/mc3/conda-bld/html5lib_1629144453894/work
 idna @ file:///tmp/build/80754af9/idna_1622654382723/work
@@ -87,6 +91,7 @@ ipykernel @ file:///C:/ci/ipykernel_1629995240690/work/dist/ipykernel-6.2.0-py3-
 ipython @ file:///C:/ci/ipython_1632141541768/work
 ipython-genutils @ file:///tmp/build/80754af9/ipython_genutils_1606773439826/work
 ipywidgets @ file:///tmp/build/80754af9/ipywidgets_1632512331373/work
+isodate==0.6.0
 isort @ file:///tmp/build/80754af9/isort_1628603791788/work
 itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
 jdcal @ file:///Users/ktietz/demo/mc3/conda-bld/jdcal_1630584345063/work
@@ -110,6 +115,7 @@ lazy-object-proxy @ file:///C:/ci/lazy-object-proxy_1616529307648/work
 libarchive-c @ file:///tmp/build/80754af9/python-libarchive-c_1617780486945/work
 llvmlite==0.36.0
 locket==0.2.1
+log-symbols==0.0.14
 lxml @ file:///C:/ci/lxml_1616443455957/work
 MarkupSafe @ file:///C:/ci/markupsafe_1621528314575/work
 matplotlib @ file:///C:/ci/matplotlib-suite_1628011511716/work
@@ -145,7 +151,7 @@ olefile @ file:///Users/ktietz/demo/mc3/conda-bld/olefile_1629805411829/work
 openpyxl @ file:///tmp/build/80754af9/openpyxl_1615411699337/work
 outcome==1.1.0
 packaging @ file:///tmp/build/80754af9/packaging_1625611678980/work
-pandas @ file:///C:/ci/pandas_1629682609359/work
+pandas==1.2.5
 pandocfilters @ file:///C:/ci/pandocfilters_1605102497129/work
 paramiko @ file:///tmp/build/80754af9/paramiko_1598886428689/work
 parso==0.7.0
@@ -231,6 +237,7 @@ sphinxcontrib-jsmath @ file:///home/ktietz/src/ci/sphinxcontrib-jsmath_161192094
 sphinxcontrib-qthelp @ file:///home/ktietz/src/ci/sphinxcontrib-qthelp_1611921055322/work
 sphinxcontrib-serializinghtml @ file:///tmp/build/80754af9/sphinxcontrib-serializinghtml_1624451540180/work
 sphinxcontrib-websupport @ file:///tmp/build/80754af9/sphinxcontrib-websupport_1597081412696/work
+spinners==0.0.24
 spyder @ file:///C:/ci/spyder_1616776239898/work
 spyder-kernels @ file:///C:/ci/spyder-kernels_1614030842607/work
 SQLAlchemy @ file:///C:/ci/sqlalchemy_1626948551817/work
@@ -238,6 +245,7 @@ statsmodels==0.12.2
 sympy @ file:///C:/ci/sympy_1618255511605/work
 tables==3.6.1
 tblib @ file:///Users/ktietz/demo/mc3/conda-bld/tblib_1629402031467/work
+termcolor==1.1.0
 terminado==0.9.4
 testpath @ file:///tmp/build/80754af9/testpath_1624638946665/work
 textdistance @ file:///tmp/build/80754af9/textdistance_1612461398012/work
