@@ -23,6 +23,7 @@ from sqlalchemy import create_engine, event, Text, Float
 from sqlalchemy.pool import Pool
 
 import pymysql
+from library.logging_pack import logger
 
 pymysql.install_as_MySQLdb()
 TR_REQ_TIME_INTERVAL = 0.5

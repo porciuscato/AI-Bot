@@ -14,7 +14,7 @@ from library.daily_crawler import *
 import pymysql.cursors
 # import numpy as np
 from datetime import timedelta
-from library.logging_pack import *
+from library.logging_pack_20210924 import *
 from library import cf
 from pandas import DataFrame
 
