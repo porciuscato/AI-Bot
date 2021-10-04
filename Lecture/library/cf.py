@@ -40,7 +40,7 @@ TR_REQ_TIME_INTERVAL_LONG = 1
 max_api_call = 999
 
 # dart api key (고급클래스에서 소개)
-dart_api_key = ''
+dart_api_key = config('DART_API_KEY')
 
 # etf 사용 여부 (고급클래스에서 소개)
 use_etf = False
