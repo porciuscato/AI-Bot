@@ -1,7 +1,7 @@
 alabaster==0.7.12
-anaconda-client==1.7.2
-anaconda-navigator==1.9.12
-anaconda-project==0.8.3
+#anaconda-client==1.7.2
+#anaconda-navigator==1.9.12
+#anaconda-project==0.8.3
 argh==0.26.2
 asn1crypto==1.3.0
 astroid==2.3.3
@@ -31,10 +31,10 @@ cloudpickle==1.3.0
 clyent==1.2.2
 colorama==0.4.3
 comtypes==1.1.7
-conda==4.8.2
-conda-build==3.18.11
-conda-package-handling==1.6.0
-conda-verify==3.4.2
+#conda==4.8.2
+#conda-build==3.18.11
+#conda-package-handling==1.6.0
+#conda-verify==3.4.2
 contextlib2==0.6.0.post1
 cryptography==3.4.7
 cycler==0.10.0
@@ -97,9 +97,9 @@ matplotlib==3.1.3
 mccabe==0.6.1
 menuinst==1.4.16
 mistune==0.8.4
-mkl-fft==1.0.15
-mkl-random==1.1.0
-mkl-service==2.3.0
+#mkl-fft==1.0.15
+#mkl-random==1.1.0
+#mkl-service==2.3.0
 mock==4.0.1
 more-itertools==8.2.0
 mpmath==1.1.0
@@ -132,6 +132,7 @@ pep8==1.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==7.0.0
+pip==20.0.2
 pkginfo==1.5.0.1
 pluggy==0.13.1
 ply==3.11
@@ -192,6 +193,7 @@ scipy==1.4.1
 seaborn==0.10.0
 selenium==3.141.0
 Send2Trash==1.5.0
+#setuptools==45.2.0.post20200210
 simplegeneric==0.8.1
 singledispatch==3.4.0.3
 six==1.14.0
@@ -230,6 +232,7 @@ wcwidth==0.1.8
 webencodings==0.5.1
 websockets==9.1
 Werkzeug==1.0.0
+wheel==0.34.2
 widgetsnbextension==3.5.1
 win-inet-pton==1.1.0
 win-unicode-console==0.5
