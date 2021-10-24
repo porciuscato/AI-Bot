@@ -3,7 +3,7 @@ from functools import partial
 ver = "#version 1.3.13"
 print(f"open_api Version: {ver}")
 
-from library.simulator_func_mysql import *
+from library.SimulatorFuncMysql import *
 import datetime
 import sys
 from PyQt5.QAxContainer import *
@@ -61,7 +61,7 @@ def timedout_exit(widget):
     sys.exit(-1)
 
 
-class open_api(QAxWidget):
+class OpenApi(QAxWidget):
     def __init__(self):
         super().__init__()
 
@@ -81,7 +81,7 @@ class open_api(QAxWidget):
 
         # open_api가 호출 되는 경우 (콜렉터, 모의투자, 실전투자) 의 경우는
         # 아래 simulator_func_mysql 클래스를 호출 할 때 두번째 인자에 real을 보낸다.
-        self.sf = simulator_func_mysql(self.simul_num, 'real', self.db_name)
+        self.sf = SimulatorFuncMysql(self.simul_num, 'real', self.db_name)
         logger.debug("self.sf.simul_num(알고리즘 번호) : %s", self.sf.simul_num)
         logger.debug("self.sf.db_to_realtime_daily_buy_list_num : %s", self.sf.db_to_realtime_daily_buy_list_num)
         logger.debug("self.sf.sell_list_num : %s", self.sf.sell_list_num)

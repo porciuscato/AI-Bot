@@ -1,5 +1,5 @@
 # version 1.3.2
-from library.collector_api import *
+from library.CollectorApi import *
 
 
 print("collector 프로그램이 시작 되었습니다!")
@@ -11,7 +11,7 @@ class Collector:
 
     def __init__(self):
         print("__init__ 함수에 들어왔습니다.")
-        self.collector_api = collector_api()
+        self.collector_api = CollectorApi()
 
     def collecting(self):
         self.collector_api.code_update_check()

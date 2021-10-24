@@ -7,7 +7,7 @@ print(f"collector_api Version: {ver}")
 
 import numpy
 import pathlib
-from library.open_api import *
+from library.OpenApi import *
 import os
 import time
 from PyQt5.QtWidgets import *
@@ -22,9 +22,9 @@ MARKET_KOSDAQ = 10
 
 
 # 콜렉팅에 사용되는 메서드를 모아 놓은 클래스
-class collector_api:
+class CollectorApi:
     def __init__(self):
-        self.open_api = open_api()
+        self.open_api = OpenApi()
         self.engine_JB = self.open_api.engine_JB
         self.variable_setting()
         self.kind = KINDCrawler()
