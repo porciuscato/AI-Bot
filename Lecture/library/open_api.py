@@ -250,7 +250,7 @@ class open_api(QAxWidget):
     def account_info(self):
         logger.debug("account_info 함수에 들어왔습니다!")
         account_number = self.get_login_info("ACCNO")
-        self.account_number = account_number.split(';')[0]
+        self.account_number = account_number.split(';')[1]
         logger.debug("계좌번호 : " + self.account_number)
 
     # OpenAPI+에서 계좌 정보 및 로그인 사용자 정보를 얻어오는 메서드는 GetLoginInfo입니다.
