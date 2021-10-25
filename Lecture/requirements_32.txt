@@ -8,4 +8,4 @@ dart_fss==0.3.2
 PyQt5==5.12
 cryptography==3.4.7
 pyopenssl==20.0.1
-
+python-decouple
