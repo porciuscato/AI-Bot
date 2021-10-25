@@ -1,0 +1,5 @@
+>>>>>> Pycharm 기본 Terminal 세팅을 git bash로 해놓기
+ctrl + alt + s -> terminal -> application setting: C:\Program Files\Git\bin\bash.exe
+
+>>>>>> Pycharm 기본 Terminal 세팅을 conda로 해놓기
+ctrl + alt + s -> terminal -> application setting: C:\Windows\System32\cmd.exe
