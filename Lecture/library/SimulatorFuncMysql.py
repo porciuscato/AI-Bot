@@ -180,7 +180,7 @@ class SimulatorFuncMysql:
                     # 매도 리스트 설정 알고리즘 번호 (절대모멘텀 query ver)
                     self.sell_list_num = 5
 
-                elif self.simul_num == 9 :
+                elif self.simul_num == 9:
                     # 매수 리스트 설정 알고리즘 번호 (절대모멘텀 query ver)
                     self.db_to_realtime_daily_buy_list_num = 8
                     # 매도 리스트 설정 알고리즘 번호 (절대모멘텀 query ver + losscut point 추가)

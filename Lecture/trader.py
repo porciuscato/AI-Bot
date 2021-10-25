@@ -1,7 +1,7 @@
 ver = "#version 1.3.1"
 print(f"trader Version: {ver}")
 
-from library.open_api import *
+from library.OpenApi import *
 from PyQt5.QtWidgets import *
 
 logger.debug("trader start !!!!!!")
@@ -12,7 +12,7 @@ class Trader(QMainWindow):
         logger.debug("Trader __init__!!!")
         super().__init__()
         # 예제에 사용한 openapi는 사용하지 않습니다. library.open_api를 사용합니다.
-        self.open_api = open_api()
+        self.open_api = OpenApi()
         # 현재 시간을 저장
         self.current_time = QTime.currentTime()
         # 변수 설정 함수

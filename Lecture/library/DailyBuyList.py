@@ -6,13 +6,13 @@ from sqlalchemy import event, String
 from library.daily_crawler import *
 from library import cf
 from pandas import DataFrame
-from .open_api import escape_percentage
+from .OpenApi import escape_percentage
 
 MARKET_KOSPI = 0
 MARKET_KOSDAQ = 10
 
 
-class daily_buy_list():
+class DailyBuyList:
     def __init__(self):
         self.variable_setting()
 
@@ -137,4 +137,4 @@ class daily_buy_list():
 
 
 if __name__ == "__main__":
-    daily_buy_list = daily_buy_list()
+    daily_buy_list = DailyBuyList()

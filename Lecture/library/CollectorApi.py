@@ -11,7 +11,7 @@ from library.OpenApi import *
 import os
 import time
 from PyQt5.QtWidgets import *
-from library.daily_buy_list import *
+from library.DailyBuyList import *
 from pandas import DataFrame
 # from kind_crawling import *
 from library.logging_pack import logger
@@ -33,7 +33,7 @@ class CollectorApi:
         self.open_api.py_gubun = "collector"
         self.dc = daily_crawler(self.open_api.cf.real_db_name, self.open_api.cf.real_daily_craw_db_name,
                                 self.open_api.cf.real_daily_buy_list_db_name)
-        self.dbl = daily_buy_list()
+        self.dbl = DailyBuyList()
 
     # 콜렉팅을 실행하는 함수
     def code_update_check(self):
