@@ -94,7 +94,7 @@ class SimulatorFuncMysql:
         # self.buy_stop옵션은 수정 필요가 없음. self.only_nine_buy 옵션을 True로 하게 되면 시뮬레이터가 9시에 매수 후에 self.buy_stop을 true로 변경해서 당일에는 더이상 매수하지 않도록 설정함
         self.buy_stop = False
 
-        # AI알고리즘 사용 여부 (고급 챕터에서 소개)
+        # AI알고리즘 사용 여부 (고급 챕터에서 소개) # 두 변수를 원하는 시뮬레이션에 붙이면 AI 사용
         self.use_ai = False  # ai 알고리즘 사용 시 True 사용 안하면 False
         self.ai_filter_num = 1  # ai 알고리즘 선택
 

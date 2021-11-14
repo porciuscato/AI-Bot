@@ -13,7 +13,7 @@ import time
 from PyQt5.QtWidgets import *
 from library.DailyBuyList import *
 from pandas import DataFrame
-# from kind_crawling import *
+from kind_crawling import *
 from library.logging_pack import logger
 from kind_crawling import *
 
@@ -91,10 +91,10 @@ class CollectorApi:
         # cmd 콘솔창 종료
         os.system("@taskkill /f /im cmd.exe")
 
-        # # AI 알고리즘 적용
-        # if self.open_api.sf.use_ai:
-        #     path = pathlib.Path(__file__).parent.parent.absolute() / 'bat' / 'ai_filter.bat'
-        #     os.system(f"start {path} {self.open_api.db_name} {self.open_api.simul_num}")
+        # AI 알고리즘 적용
+        if self.open_api.sf.use_ai:
+            path = pathlib.Path(__file__).parent.parent.absolute() / 'bat' / 'ai_filter.bat'
+            os.system(f"start {path} {self.open_api.db_name} {self.open_api.simul_num}")
 
     # 실전 봇, 모의 봇 매수 종목 세팅 + all_item_db 업데이트 함수
     def realtime_daily_buy_list_check(self):
