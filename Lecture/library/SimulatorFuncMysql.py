@@ -109,9 +109,9 @@ class SimulatorFuncMysql:
         ###!@####################################################################################################################
         # 아래 부터는 알고리즘 별로 별도의 설정을 해주는 부분
 
-        if self.simul_num in (1, 4, 5, 6, 7, 8, 9, 10):
+        if self.simul_num in (1, 4, 5, 6, 7, 8, 9, 10, 11):
             # 시뮬레이팅 시작 일자(분 별 시뮬레이션의 경우 최근 1년 치 데이터만 있기 때문에 start_date 조정 필요)
-            self.simul_start_date = "20190101"
+            self.simul_start_date = "20200101"
 
             ######### 알고리즘 선택 #############
             # 매수 리스트 설정 알고리즘 번호
@@ -159,7 +159,7 @@ class SimulatorFuncMysql:
                 self.db_to_realtime_daily_buy_list_num = 6
 
         # 절대 모멘텀 / 상대 모멘텀
-            elif self.simul_num in (7, 8, 9, 10):
+            elif self.simul_num in (7, 8, 9, 10, 11):
                 # 매수 리스트 설정 알고리즘 번호(절대모멘텀 code ver)
                 self.db_to_realtime_daily_buy_list_num = 7
                 # 매도 리스트 설정 알고리즘 번호(절대모멘텀 code ver)
@@ -193,6 +193,10 @@ class SimulatorFuncMysql:
                     self.db_to_realtime_daily_buy_list_num = 9
                     # 매도 리스트 설정 알고리즘 번호 (절대모멘텀 query ver + losscut point 추가)
                     self.sell_list_num = 5
+
+                elif self.simul_num == 11:
+                    self.use_ai = True
+                    self.ai_filter_num = 1
 
         elif self.simul_num == 2:
             # 시뮬레이팅 시작 일자

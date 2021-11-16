@@ -12,7 +12,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 
 from ai.SPPModel import load_data, create_model, evaluate, predict, DataNotEnough
 from library import cf
-from library.open_api import setup_sql_mod
+from library.OpenApi import setup_sql_mod
 
 listen(Pool, 'connect', setup_sql_mod)
 listen(Pool, 'first_connect', setup_sql_mod)
@@ -20,8 +20,8 @@ listen(Pool, 'first_connect', setup_sql_mod)
 
 # 모의투자, 실전투자 일때만 들어오는 함수
 def filter_by_ai(db_name, simul_num):
-    from library.simulator_func_mysql import simulator_func_mysql
-    sf = simulator_func_mysql(simul_num, 'real', db_name)
+    from library.SimulatorFuncMysql import SimulatorFuncMysql
+    sf = SimulatorFuncMysql(simul_num, 'real', db_name)
     try:
         ai_filter(sf.ai_filter_num, sf.engine_simulator)
     except AttributeError:
