@@ -13,7 +13,6 @@ pymysql.install_as_MySQLdb()
 import MySQLdb
 
 
-
 # jango_data 테이블 이외 추가 컬럼 설명
 # account : 시뮬레이션 번호
 # total_date_count : 총 매수한 일자 수
@@ -21,7 +20,7 @@ import MySQLdb
 # total_buy_count : 총 매수 종목수
 
 
-class simul_scraper():
+class SimulScraper:
     def __init__(self):
         self.cf = library.cf
         if len(sys.argv) == 1:
@@ -47,7 +46,6 @@ class simul_scraper():
 
         # ranking 테이블을 수익률 순 재정렬
         self.set_orderby_scraped_db()
-
 
     # 데이터 베이스를 만드는 함수
     def create_database(self,db_name):
@@ -75,8 +73,6 @@ class simul_scraper():
         sql = "SELECT date from jango_data order by date desc limit 1"
         return self.engine_start_db.execute(sql).fetchall()[0][0]
 
-
-
     # simul_scrap에 jango_data 테이블이 있는지 확인
     def is_scrap_table_exist(self, table_name):
         sql = "select 1 from information_schema.tables where table_schema = '%s' and table_name = '%s'"
@@ -96,6 +92,7 @@ class simul_scraper():
             return True
         else:
             return False
+
     # 데이터프레임을 만들 때 사용할 컬럼 리스트 설정
     def set_jango_list(self):
         self.jango_list = ['account', 'date', 'today_earning_rate', 'sum_valuation_profit', 'total_profit',
@@ -168,7 +165,6 @@ class simul_scraper():
                                 'today_buy_reinvest_count3_remain_count', 'today_buy_reinvest_count4_remain_count',
                                 'today_buy_reinvest_count5_remain_count', 'total_date_count', 'total_profitcut_rate',
                                 'total_buy_count']
-
 
     def set_jango_df(self, rows):
         jango_df = DataFrame(rows, columns=self.jango_list)
@@ -262,14 +258,14 @@ class simul_scraper():
 
             if self.is_simul_database_exist(self.simul_db_name) == False:
                 print(self.simul_db_name + " not exist !!! ")
-                continue;
+                continue
 
             self.engine_simulator = create_engine(
                 "mysql+mysqldb://" + self.cf.db_id + ":" + self.cf.db_passwd + "@" + self.cf.db_ip + ":" + self.cf.db_port + "/" + str(
                     self.simul_db_name),
                 encoding='utf-8')
 
-            if self.is_simul_table_exist(self.simul_db_name, "jango_data") == False:
+            if self.is_simul_table_exist(self.simul_db_name, "jangodd_data") == False:
                 print("jango_data 존재하지 않는다!!!")
 
             else:
@@ -287,4 +283,4 @@ class simul_scraper():
 
 
 if __name__ == "__main__":
-    simul_scraper()
+    SimulScraper()
