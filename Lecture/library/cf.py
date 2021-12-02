@@ -43,4 +43,4 @@ max_api_call = 999
 dart_api_key = config('DART_API_KEY')
 
 # etf 사용 여부 (고급클래스에서 소개)
-use_etf = False
+use_etf = True

@@ -109,9 +109,9 @@ class SimulatorFuncMysql:
         ###!@####################################################################################################################
         # 아래 부터는 알고리즘 별로 별도의 설정을 해주는 부분
 
-        if self.simul_num in (1, 4, 5, 6, 7, 8, 9, 10, 11):
+        if self.simul_num in (1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14):
             # 시뮬레이팅 시작 일자(분 별 시뮬레이션의 경우 최근 1년 치 데이터만 있기 때문에 start_date 조정 필요)
-            self.simul_start_date = "20200101"
+            self.simul_start_date = "20210101"
 
             ######### 알고리즘 선택 #############
             # 매수 리스트 설정 알고리즘 번호
@@ -165,7 +165,7 @@ class SimulatorFuncMysql:
                 # 매도 리스트 설정 알고리즘 번호(절대모멘텀 code ver)
                 self.sell_list_num = 4
                 # 시뮬레이팅 시작 일자(분 별 시뮬레이션의 경우 최근 1년 치 데이터만 있기 때문에 start_date 조정 필요)
-                self.simul_start_date = "20200101"
+                self.simul_start_date = "20210101"
                 # n일 전 종가 데이터를 가져올지 설정 (ex. 20 -> 장이 열리는 날 기준 20일 이니까 기간으로 보면 약 한 달, 250일->1년)
                 self.day_before = 20 # 단위 일
                 # n일 전 종가 대비 현재 종가(현재가)가 몇 프로 증가 했을 때 매수, 몇 프로 떨어졌을 때 매도 할 지 설정(0으로 설정 시 단순히 증가 했을 때 매수, 감소 했을 때 매도)
@@ -198,9 +198,31 @@ class SimulatorFuncMysql:
                     self.use_ai = True
                     self.ai_filter_num = 1
 
+                elif self.simul_num in (12, 13, 14):
+                    self.simul_start_date = "20210101"
+                    self.use_min = True
+                    # 아침 9시에만 매수를 하고 싶은 경우 True, 9시가 아니어도 매수를 하고 싶은 경우 False(분별 시뮬레이션, trader 적용 가능 / 일별 시뮬레이션은 9시에만 매수, 매도)
+                    self.only_nine_buy = False
+                    # 실시간 조건 매수 옵션 (고급 챕터에서 소개) self.only_nine_buy 옵션을 반드시 False로 설정해야함
+                    self.trade_check_num = 1  # 실시간 조건 매수 알고리즘 선택 (1,2,3..)
+                    # 특정 거래대금 보다 x배 이상 증가 할 경우 매수
+                    self.volume_up = 2
+                    #
+                    if self.simul_num == 13:
+                        self.trade_check_num = 2
+                        # 매수하는 순간 종목의 최신 종가 보다 1% 이상 오른 경우 사지 않도록 하는 설정(변경 가능)
+                        self.invest_limit_rate = 1.01
+                        # 매수하는 순간 종목의 최신 종가 보다 -2% 이하로 떨어진 경우 사지 않도록 하는 설정(변경 가능)
+                        self.invest_min_limit_rate = 0.98
+
+                    # 래리윌리엄스 변동성 돌파 전략
+                    elif self.simul_num == 14:
+                        self.trade_check_num = 3
+                        self.rarry_k = 0.5
+
         elif self.simul_num == 2:
             # 시뮬레이팅 시작 일자
-            self.simul_start_date = "20190101"
+            self.simul_start_date = "20210101"
 
             ######### 알고리즘 선택 #############
             # 매수 리스트 설정 알고리즘 번호
@@ -226,12 +248,11 @@ class SimulatorFuncMysql:
             # 실전/모의 봇 돌릴 때 매수하는 순간 종목의 최신 종가 보다 -2% 이하로 떨어진 경우 사지 않도록 하는 설정(변경 가능)
             self.invest_min_limit_rate = 0.98
 
-
         elif self.simul_num == 3:
 
             # 시뮬레이팅 시작 일자
 
-            self.simul_start_date = "20190101"
+            self.simul_start_date = "20210101"
 
             ######### 알고리즘 선택 #############
 
@@ -482,7 +503,7 @@ class SimulatorFuncMysql:
                     continue
 
                 # 촬영 후 아래 if 문 추가 (향후 실시간 조건 매수 시 사용) ###################
-                if self.use_min and not self.only_nine_buy and self.trade_check_num :
+                if self.use_min and not self.only_nine_buy and self.trade_check_num:
                     # 시작가
                     open = self.get_now_open_price_by_date(code, date_rows_today)
                     # 당일 누적 거래량
