@@ -75,6 +75,7 @@
 
 5. simulator_func_mysql.py 에서 매수함수(db_to_realtime_daily_buy_list)
 에 기존에 있던 알고리즘들에 not exist stock_etf를 추가해줘야한다.
+etf를 취급하지 않는 시뮬레이션에 추가한다.
   ex ) "AND NOT exists (SELECT null FROM stock_etf b WHERE YES_DAY.code=b.code)" \
 
 6. 새롭게 추가 할 알고리즘에 만약 stock_etf만 사용을 할 경우.

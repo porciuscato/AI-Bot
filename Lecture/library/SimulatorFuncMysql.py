@@ -109,7 +109,7 @@ class SimulatorFuncMysql:
         ###!@####################################################################################################################
         # 아래 부터는 알고리즘 별로 별도의 설정을 해주는 부분
 
-        if self.simul_num in (1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14):
+        if self.simul_num in (1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16):
             # 시뮬레이팅 시작 일자(분 별 시뮬레이션의 경우 최근 1년 치 데이터만 있기 때문에 start_date 조정 필요)
             self.simul_start_date = "20210101"
 
@@ -219,6 +219,9 @@ class SimulatorFuncMysql:
                     elif self.simul_num == 14:
                         self.trade_check_num = 3
                         self.rarry_k = 0.5
+
+            elif self.simul_num == 16:
+                self.db_to_realtime_daily_buy_list_num = 11
 
         elif self.simul_num == 2:
             # 시뮬레이팅 시작 일자
@@ -650,6 +653,7 @@ class SimulatorFuncMysql:
 
             sql = "select * from `" + date_rows_yesterday + "` a where yes_clo20 > yes_clo5 and clo5 > clo20 " \
                                                             "and NOT exists (select null from stock_konex b where a.code=b.code) " \
+                                                            "AND NOT exists (SELECT null FROM stock_etf b WHERE a.code=b.code)" \
                                                             "and close < '%s' group by code"
             realtime_daily_buy_list = self.engine_daily_buy_list.execute(sql % (self.invest_unit)).fetchall()
 
@@ -733,6 +737,14 @@ class SimulatorFuncMysql:
                 realtime_daily_buy_list = self.engine_daily_buy_list.execute(
                     sql % (self.diff_point, self.invest_unit)).fetchall()
 
+        #ETF
+        elif self.db_to_realtime_daily_buy_list_num == 11:
+            sql = f"SELECT * from `{date_rows_yesterday}` YES_DAY " \
+                  "WHERE yes_clo20 > yes_clo5 and clo5 > clo20 " \
+                  "AND EXISTS (SELECT null FROM stock_etf ETF WHERE YES_DAY.code=ETF.code) " \
+                  f"AND close < {self.invest_unit} " \
+                  "GROUP BY code"
+            realtime_daily_buy_list = self.engine_daily_buy_list.execute(sql).fetchall()
 
         ######################################################################################################################################################################################
         else:
