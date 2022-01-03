@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from library.simulator_func_mysql import *
+from library.SimulatorFuncMysql import *
 
 
-class simulator_v2():
+class Simulator_v2:
     def __init__(self):
         if len(sys.argv) == 1:
             self.print_info()
@@ -33,9 +33,9 @@ class simulator_v2():
 
     def input_value(self):
         # simulator_func_mysql 라이브러리 클래스 호출
-        simulator_func_mysql(self.simul_num, self.simul_reset, 0)
+        SimulatorFuncMysql(self.simul_num, self.simul_reset, 0)
 
 
 if __name__ == "__main__":
     # simulator 클래스 호출
-    simulator_v2()
+    Simulator_v2()
