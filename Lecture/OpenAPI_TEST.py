@@ -1,10 +1,10 @@
 from PyQt5.QtWidgets import *
-from library.open_api import *
+from library.OpenAPI import *
 
 
 class OpenTest:
     def __init__(self):
-        self.open_api = open_api()
+        self.open_api = OpenApi()
         self.open_api.py_gubun = "collector"
         self.run()
 

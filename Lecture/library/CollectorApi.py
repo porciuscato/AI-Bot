@@ -7,7 +7,7 @@ print(f"collector_api Version: {ver}")
 
 import numpy
 import pathlib
-from library.OpenApi import *
+from library.OpenAPI import *
 import os
 import time
 from PyQt5.QtWidgets import *

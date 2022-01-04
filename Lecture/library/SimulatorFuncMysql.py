@@ -422,7 +422,7 @@ class SimulatorFuncMysql:
             "mysql+mysqldb://" + cf.db_id + ":" + cf.db_passwd + "@" + cf.db_ip + ":" + cf.db_port + "/daily_buy_list",
             encoding='utf-8')
 
-        from library.OpenApi import escape_percentage
+        from library.OpenAPI import escape_percentage
         event.listen(self.engine_simulator, 'before_execute', escape_percentage, retval=True)
         event.listen(self.engine_daily_craw, 'before_execute', escape_percentage, retval=True)
         event.listen(self.engine_craw, 'before_execute', escape_percentage, retval=True)

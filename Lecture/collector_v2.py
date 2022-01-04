@@ -11,9 +11,9 @@ pymysql.install_as_MySQLdb()
 
 
 
-# -> OpenApi.py 라는 소스파일에 있는 Openapi 클래스만 가져와서 사용하고 싶은 경우. -> openapi에 import 된 라이브러리를 사용하고 싶지 않다!
+# -> OpenAPI.py 라는 소스파일에 있는 Openapi 클래스만 가져와서 사용하고 싶은 경우. -> openapi에 import 된 라이브러리를 사용하고 싶지 않다!
 # from openapi import Openapi
-# OpenApi.py 라는 소스파일에 있는 모든 함수, 라이브러리, 클래스 등을 가져오고 싶을 경우 아래처럼!
+# OpenAPI.py 라는 소스파일에 있는 모든 함수, 라이브러리, 클래스 등을 가져오고 싶을 경우 아래처럼!
 from openapi import *
 
 # get_item : 종목 리스트 가져오는 모듈

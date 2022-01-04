@@ -6,7 +6,7 @@ from sqlalchemy import event, String
 from library.daily_crawler import *
 from library import cf
 from pandas import DataFrame
-from .OpenApi import escape_percentage
+from .OpenAPI import escape_percentage
 
 MARKET_KOSPI = 0
 MARKET_KOSDAQ = 10

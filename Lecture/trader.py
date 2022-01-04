@@ -1,7 +1,7 @@
 ver = "#version 1.3.1"
 print(f"trader Version: {ver}")
 
-from library.OpenApi import *
+from library.OpenAPI import *
 from PyQt5.QtWidgets import *
 
 logger.debug("trader start !!!!!!")

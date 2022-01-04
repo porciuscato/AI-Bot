@@ -12,7 +12,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 
 from ai.SPPModel import load_data, create_model, evaluate, predict, DataNotEnough
 from library import cf
-from library.OpenApi import setup_sql_mod
+from library.OpenAPI import setup_sql_mod
 
 listen(Pool, 'connect', setup_sql_mod)
 listen(Pool, 'first_connect', setup_sql_mod)
