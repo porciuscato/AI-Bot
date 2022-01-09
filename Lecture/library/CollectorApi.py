@@ -46,7 +46,12 @@ class CollectorApi:
         # kospi(stock_kospi), kosdaq(stock_kosdaq), konex(stock_konex)
         # 관리종목(stock_managing), 불성실법인종목(stock_insincerity) 업데이트
         if rows[0][0] != self.open_api.today:
+            self.open_api.check_balance()
             self.get_code_list()  # 촬영 후 일부 업데이트 되었습니다.
+            self._create_stock_info()
+
+            sql = "UPDATE setting_data SET code_update='%s' limit 1"
+            self.engine_JB.execute(sql % (self.open_api.today))
 
         # 촬영 후 콜렉팅 순서가 일부 업데이트 되었습니다.
         # 잔고 및 보유종목 현황 db setting  & 당일 종목별 실현 손익
@@ -295,9 +300,6 @@ class CollectorApi:
         #
         # assert sia_count == stock_union_count, "stock_item_all does not contain all data."
         ###
-
-        sql = "UPDATE setting_data SET code_update='%s' limit 1"
-        self.engine_JB.execute(sql % (self.open_api.today))
 
     def _get_code_list_by_market(self, market_num):
         codes = self.open_api.dynamicCall(f'GetCodeListByMarket("{market_num}")')
@@ -964,6 +966,76 @@ class CollectorApi:
             self.open_api.set_input_value("종료일자", self.open_api.today)
             self.open_api.comm_rq_data("opt10074_req", "opt10074", 2, "0329")
 
+    # stock_info 테이블을 만드는 함수
+    def _create_stock_info(self):
+        # stock_item_all 에 있는 종목 코드를 가져온다
+        stock_codes = self.open_api.engine_daily_buy_list.execute("""
+            SELECT code FROM stock_item_all
+        """).fetchall()
+        stock_info_data = defaultdict(list)
 
+        for row in stock_codes:
+            stock_info_data['code'].append(row['code'])
 
+        # ex3 에서 사용
+        thema_dict = self.open_api.get_theme_info()
+
+        # ex4 에서 사용
+        data_map = {
+            '시장구분0': [stock_info_data['stock_market'], stock_info_data['category0']],
+            '업종구분': [stock_info_data['market_class0'], stock_info_data['market_class1']],
+            '시장구분1': [stock_info_data['category1']]
+        }
+
+        for c in stock_info_data['code']:
+            # ex1. 감리 구분 컬럼 추가
+            stock_info_data['audit'].append(self.open_api.dynamicCall('GetMasterConstruction(QString)', c))
+
+            # ex2. 증거금 비율(margin), 비고(remarks, 거래정지여부, 관리종목여부 등) 컬럼 추가
+            stock_state = self.open_api.dynamicCall('GetMasterStockState(QString)', c).split('|')
+            stock_info_data['margin'].append(stock_state[0][3:-1])
+            stock_info_data['remarks'].append('|'.join(stock_state[1:]))
+
+            # ex3. 종목별 테마코드, 테마명 컬럼 추가
+            if c not in thema_dict and not thema_dict[c]:
+                stock_info_data['thema_code'].append(None)
+                stock_info_data['thema_name'].append(None)
+            else:
+                theme_codes = []
+                theme_names = []
+                for theme_code, theme_name in thema_dict[c]:
+                    theme_codes.append(theme_code)
+                    theme_names.append(theme_name)
+                stock_info_data['thema_code'].append('|'.join(theme_codes))
+                stock_info_data['thema_name'].append('|'.join(theme_names))
+
+            # ex4. 주식종목 시장구분, 종목분류 등 컬럼 추가
+            stock_info = {}
+            for info in self.open_api.KOA_Functions('GetMasterStockInfo', c).split(';'):
+                if info:
+                    split_info = info.split('|')
+                    k = split_info[0]
+                    v = split_info[1:]
+                    stock_info[k] = v
+
+            for k, v in data_map.items():
+                if k in stock_info:
+                    for i, mapped_list in enumerate(v):
+                        try:
+                            mapped_list.append(stock_info[k][i] or None)
+                        except IndexError:
+                            mapped_list.append(None)
+                else:
+                    for mapped_list in v:
+                        mapped_list.append(None)
+
+        # dictionary 를 dataframe으로 변환하여 to_sql로 stock_info 테이블 생성
+        DataFrame.from_dict(stock_info_data).to_sql(
+            'stock_info', self.open_api.engine_daily_buy_list,
+            index=False,
+            dtype={
+                'margin': Integer
+            },
+            if_exists='replace'
+        )
 
