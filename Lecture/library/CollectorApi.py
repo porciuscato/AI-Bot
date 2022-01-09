@@ -985,6 +985,7 @@ class CollectorApi:
             '시장구분0': [stock_info_data['stock_market'], stock_info_data['category0']],
             '업종구분': [stock_info_data['market_class0'], stock_info_data['market_class1']],
             '시장구분1': [stock_info_data['category1']]
+            # date 칼럼 추가 필요
         }
 
         for c in stock_info_data['code']:
@@ -1037,5 +1038,6 @@ class CollectorApi:
                 'margin': Integer
             },
             if_exists='replace'
+            # 새로 추가 시, append 사용
         )
 
