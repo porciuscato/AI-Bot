@@ -95,6 +95,7 @@ class OpenApi(QAxWidget):
         # 여기서 invest_unit 설정함
         self.sf_variable_setting()
         self.ohlcv = defaultdict(list)
+        self._data = {}
 
     # 날짜 세팅
     def date_setting(self):
@@ -396,6 +397,8 @@ class OpenApi(QAxWidget):
             # logger.debug("opt10080_req!!!")
             # logger.debug("Get an de_deposit!!!")
             self._opt10080(rqname, trcode)
+        elif rqname == "opt10001_req":
+            self._opt10001(rqname, trcode)
         elif rqname == "send_order_req":
             pass
         else:
@@ -1774,3 +1777,24 @@ class OpenApi(QAxWidget):
         for x in data.split(';'):
             temp.append(x[1:])
         return temp
+
+    def _opt10001(self, rqname, trcode):
+        output_keys = [
+            '종목코드', '결산월', '액면가', '자본금', '상장주식', '신용비율', '연중최고', '연중최저', '시가총액', 'ROE', 'EPS',
+            '외인소진률', '대용가', 'PER', 'PBR', 'EV', 'BPS', '매출액', '영업이익', '당기순이익', '250최고', '250최저',
+            '상한가', '하한가', '기준가', '250최고가일', '250최저가일', '250최저가대비율', '거래대비', '유통주식', '유통비율'
+        ]
+        result = {}
+        for k in output_keys:
+            result[k] = self._get_comm_data(trcode, rqname, 0, k)
+
+        self._data = result
+
+    # 금융 데이터 요청 함수
+    def get_stock_finance(self, code):
+        # koastudio 좌측 하단 TR목록 / opt10001 클릭 후 샘플 참고
+        self.set_input_value('종목코드', code) # 입력 데이터 설정
+        self.comm_rq_data('opt10001_req', 'opt10001', '0', '0001') #opt10001 TR 을 키움증권 서버에 요청
+        # CommRqData 이후 키움증권 서버에서 receive_tr_data 함수 호출 -> receive_tr_data 함수 에서 _opt10001 함수 호출
+        # self._data 는 _opt10001 함수에서 저장 된 값
+        return self._data
