@@ -14,6 +14,7 @@ class Collector:
         self.collector_api = CollectorApi()
 
     def collecting(self):
+        # self.collector_api._create_stock_finance()
         self.collector_api.code_update_check()
 
 
